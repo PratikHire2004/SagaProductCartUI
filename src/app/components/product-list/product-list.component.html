@@ -1,0 +1,49 @@
+<div class="list row">
+  <div class="col-md-8">
+  </div>
+  <div class="table-responsive">
+    <h4>Product List</h4>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Description</th>
+        <th scope="col"> </th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tr class="" *ngFor="let product of products; let i = index"
+    [class.active]="i == currentIndex"
+    (click)="setActiveProduct(product, i)">
+    <th scope="row">{{i}}</th>
+      <td class="h-50">
+        <span>{{ product.name }}</span>       
+      </td>
+      <td class="h-50">
+        <span>{{ product.price }}</span>       
+      </td>
+      <td class="h-50">
+        <span>{{ product.quantity }}</span>       
+      </td>
+      <td class="h-50">
+        <span>{{ product.description }}</span>       
+      </td>
+      <td class="h-50">
+         <button class="btn btn-sm btn-success" (click)="updateProduct(product._id)"> EDIT </button>       
+      </td>
+      <td class="h-50">
+        <button class="btn btn-sm btn-danger" (click)="removeProduct(product._id)"> DELETE </button>       
+     </td>
+    </tr>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <app-proudct-details
+      [viewModel]="true"
+      [currentProduct]="this.currentProduct"
+    ></app-proudct-details>
+  </div>
+</div>
